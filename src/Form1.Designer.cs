@@ -137,7 +137,7 @@
             this.formsPlot1.Name = "formsPlot1";
             this.formsPlot1.Size = new System.Drawing.Size(1557, 790);
             this.formsPlot1.TabIndex = 8;
-            this.formsPlot1.MouseMoved += new System.EventHandler(this.formsPlot1_MouseMoved);
+            this.formsPlot1.MouseMoved += new System.Windows.Forms.MouseEventHandler(this.formsPlot1_MouseMoved);
             // 
             // Func2
             // 
@@ -553,32 +553,36 @@
         }
 
         #endregion
+        //Funcitons
+        public System.Windows.Forms.TextBox Func1;
+        public System.Windows.Forms.TextBox Func2;
+        public System.Windows.Forms.TextBox Initial;
+        //Toggles
+        public System.Windows.Forms.CheckBox DrawInit;
+        public System.Windows.Forms.CheckBox traj;
+        public System.Windows.Forms.CheckBox DrawFunc;
+        //Values
+        public System.Windows.Forms.NumericUpDown IncValue;
+        public System.Windows.Forms.NumericUpDown iters;
+        public System.Windows.Forms.NumericUpDown start;
+        public System.Windows.Forms.NumericUpDown finish;
+        public System.Windows.Forms.NumericUpDown TrajIters;
+        //Formatting
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.TextBox Func1;
         private System.Windows.Forms.Label IncLable;
-        private System.Windows.Forms.NumericUpDown IncValue;
-        private ScottPlot.FormsPlot formsPlot1;
-        private System.Windows.Forms.TextBox Func2;
+        public ScottPlot.FormsPlot formsPlot1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
-        private System.Windows.Forms.NumericUpDown iters;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label InitialCondition;
-        private System.Windows.Forms.TextBox Initial;
         private System.Windows.Forms.Label label6;
         private System.Windows.Forms.Label label7;
-        private System.Windows.Forms.NumericUpDown finish;
-        private System.Windows.Forms.NumericUpDown start;
-        private System.Windows.Forms.CheckBox DrawInit;
-        private System.Windows.Forms.CheckBox traj;
         private System.Windows.Forms.ToolStripContainer toolStripContainer1;
         private System.Windows.Forms.ToolStrip toolStrip1;
         private System.Windows.Forms.ToolStripDropDownButton DrawDrop;
         private System.Windows.Forms.Panel InitialPanel;
         private System.Windows.Forms.ToolStripDropDownButton InitialDrop;
-        private System.Windows.Forms.CheckBox DrawFunc;
         private System.Windows.Forms.Panel TrajIterPanel;
-        private System.Windows.Forms.NumericUpDown TrajIters;
         private System.Windows.Forms.Label label8;
         private System.Windows.Forms.Panel FractalPanel;
         private System.Windows.Forms.ToolStripSeparator toolStripSeparator1;
