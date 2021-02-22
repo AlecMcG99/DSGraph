@@ -12,8 +12,7 @@ using System.Collections;
 
 namespace WindowsFormsApp1
 {
-    //I am making this comment to test Pull request requirements
-    //This is a change
+    
     public partial class Form1 : Form
     {
         private Function F;
@@ -196,7 +195,7 @@ namespace WindowsFormsApp1
                 mouseLoc.Y -= this.PointToScreen(formsPlot1.Location).Y;
                 mouseLoc.Y -= (Cursor.Size.Height - Cursor.Size.Height / 6);
 
-                PointF mouse = formsPlot1.plt.CoordinateFromPixel(mouseLoc); ;
+                PointF mouse = formsPlot1.plt.CoordinateFromPixel(mouseLoc); 
                 trajX[0] = (double)(mouse.X);
                 trajY[0] = (double)(mouse.Y);
 
