@@ -53,7 +53,7 @@ namespace WindowsFormsApp1
 			double IStart = (double)form.start.Value;
 			double IDone = (double)form.finish.Value;
 			double size = (Math.Abs(IDone) + Math.Abs(IStart)) / increment;
-
+			
 			this.ICx = new double[(int)size + 1];
 			this.ICy = new double[(int)size + 1];
 			this.ICCount = 0;
@@ -92,12 +92,15 @@ namespace WindowsFormsApp1
 
 					j++;
 				}
+				Random rnd = new Random();
+				Color randomColor = Color.FromArgb(rnd.Next(256), rnd.Next(256), rnd.Next(256));
 
 				scatters.Add(new PlottableScatter(outX.ToArray(), outY.ToArray())
 				{
 					lineWidth = 0,
-					markerSize = 1
-				});
+					markerSize = 1,
+					color = randomColor
+				}); 
 
 				i++;
 			}

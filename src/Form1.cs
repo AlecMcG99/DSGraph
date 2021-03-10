@@ -65,7 +65,7 @@ namespace WindowsFormsApp1
 		{
 			formsPlot1.plt.Clear();
 			DynamicalSystem dynamicalSystem = new DynamicalSystem("1", this);
-			formsPlot1.plt.Add(dynamicalSystem.getIC());
+			if(DrawInit.Checked)formsPlot1.plt.Add(dynamicalSystem.getIC());
 			foreach (ScottPlot.PlottableScatter s in dynamicalSystem.getDynamicalSystem())
 			{
 				formsPlot1.plt.Add(s);
