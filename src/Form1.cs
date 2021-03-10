@@ -106,10 +106,6 @@ namespace WindowsFormsApp1
 		private void formsPlot1_MouseMoved(object sender, EventArgs e)
 		{
 
-			if (traj.Checked)
-			{
-				formsPlot1.plt.Add;
-			}
 		}
 
 		FormWindowState LastWindowState = FormWindowState.Normal;

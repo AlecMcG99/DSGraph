@@ -57,6 +57,7 @@ namespace WindowsFormsApp1
 			this.ICx = new double[(int)size + 1];
 			this.ICy = new double[(int)size + 1];
 			this.ICCount = 0;
+
 			while (IStart <= IDone)
 			{
 				ICx[ICCount] = IStart;
@@ -64,6 +65,7 @@ namespace WindowsFormsApp1
 				IStart += increment;
 				ICCount++;
 			}
+
 			return new PlottableScatter(ICx, ICy);
 		}
 
@@ -79,6 +81,7 @@ namespace WindowsFormsApp1
 				int j = 1;
 				outX.Add(ICx[i]);
 				outY.Add(ICy[i]);
+
 				while (j < iterations)
 				{
 					double nextX = F.calculate(outX[j - 1], outY[j - 1]);
@@ -87,21 +90,19 @@ namespace WindowsFormsApp1
 					outX.Add(Math.Round(nextX, 5));
 					outY.Add(Math.Round(nextY, 5));
 
-
 					j++;
 				}
-				i++;
+
 				scatters.Add(new PlottableScatter(outX.ToArray(), outY.ToArray())
 				{
 					lineWidth = 0,
 					markerSize = 1
 				});
 
-
+				i++;
 			}
 
 			return scatters.ToArray();
-
 		}
 
 		public PlottableScatter getTrajectory()
@@ -118,6 +119,7 @@ namespace WindowsFormsApp1
 			double[] ys = new double[trajectoryIterations + 1];
 			xs[0] = form.formsPlot1.plt.CoordinateFromPixelX(mouseLoc.X);
 			ys[0] = form.formsPlot1.plt.CoordinateFromPixelY(mouseLoc.Y);
+
 			int i = 1;
 			while (i <= trajectoryIterations)
 			{
