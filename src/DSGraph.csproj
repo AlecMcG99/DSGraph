@@ -36,6 +36,9 @@
     <Reference Include="MathParser.org-mXparser, Version=4.4.0.0, Culture=neutral, PublicKeyToken=0fbab7add73ed6e2, processorArchitecture=MSIL">
       <HintPath>..\packages\MathParser.org-mXparser.4.4.1\lib\net472\MathParser.org-mXparser.dll</HintPath>
     </Reference>
+    <Reference Include="Noemax.Compression.Net4.Trial, Version=17.301.0.0, Culture=neutral, PublicKeyToken=4c0defa954f97f18, processorArchitecture=MSIL">
+      <HintPath>..\packages\Noemax.Compression.17.301.0\lib\net40\Noemax.Compression.Net4.Trial.dll</HintPath>
+    </Reference>
     <Reference Include="runtime.osx.10.10-x64.CoreCompat.System.Drawing, Version=5.8.64.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\runtime.osx.10.10-x64.CoreCompat.System.Drawing.5.8.64\lib\netstandard2.0\runtime.osx.10.10-x64.CoreCompat.System.Drawing.dll</HintPath>
     </Reference>
