@@ -9,16 +9,23 @@ namespace WindowsFormsApp1
     public class TrajectoryCompression
     {
         public string trajectoryString { get; set; }
-        public double[] xArray { get; set; }
-        public double[] yArray { get; set; }
-        ///public int precision { get; set; }
         public string compressedString { get; set; }
 
-        public TrajectoryCompression(int[] xarr, int[] yarr)
+        public TrajectoryCompression(int[] xarr, int[] yarr, int precision)
         {
-            ///Need to initialize this.arrays here
+            this.trajectoryString = "";
+
+            this.trajectoryString += "(" + xarr[0] + "," + yarr[0] + ")";
+
+            for (int i = 1; i < xarr.Length; i++)
+            {
+                string xstr = xarr[i].ToString();
+                string ystr = yarr[i].ToString();
+
+                this.trajectoryString += ",(" + xarr[i] + "," + yarr[i] + ")";
+            }
         }
-        ///Need a create traj string method and a compress method
+        ///Need a create a compress method
 
     }
 }
