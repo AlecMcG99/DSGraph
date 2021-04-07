@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Globalization;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -13,16 +14,18 @@ namespace WindowsFormsApp1
 
         public TrajectoryCompression(int[] xarr, int[] yarr, int precision)
         {
-            this.trajectoryString = "";
+            NumberFormatInfo setPrecision = new NumberFormatInfo();
+            setPrecision.NumberDecimalDigits = precision;
 
-            this.trajectoryString += "(" + xarr[0] + "," + yarr[0] + ")";
+            this.trajectoryString = "";
+            this.trajectoryString += "(" + xarr[0].ToString("N", setPrecision) + "," + yarr[0].ToString("N", setPrecision) + ")";
 
             for (int i = 1; i < xarr.Length; i++)
             {
-                string xstr = xarr[i].ToString();
-                string ystr = yarr[i].ToString();
+                string xstr = xarr[i].ToString("N", setPrecision);
+                string ystr = yarr[i].ToString("N", setPrecision);
 
-                this.trajectoryString += ",(" + xarr[i] + "," + yarr[i] + ")";
+                this.trajectoryString += ",(" + xstr + "," + ystr + ")";
             }
         }
         ///Need a create a compress method
