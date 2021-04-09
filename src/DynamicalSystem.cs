@@ -21,6 +21,10 @@ namespace WindowsFormsApp1
 		public string ID { get; set; }
 		public Function F { get; set; }
 		public Function G { get; set; }
+		public double Probability { get; set; }
+		public Function F_b { get; set; }
+		public Function G_b { get; set; }
+		public double Probability_b { get; set; }
 		public Function I { get; set; }
 		public bool drawTrajectory { get; set; }
 		public bool drawIC { get; set; }
@@ -35,9 +39,12 @@ namespace WindowsFormsApp1
 		{
 			this.ID = id;
 			this.form = form;
-
 			this.F = new Function("F", formatFunc(form.Func1.Text), "x", "y");
 			this.G = new Function("G", formatFunc(form.Func2.Text), "x", "y");
+			this.Probability = (double)form.Probability.Value;
+			this.F_b = new Function("A", formatFunc(form.Func3.Text), "x", "y");
+			this.G_b = new Function("B", formatFunc(form.Func4.Text), "x", "y");
+			this.Probability_b = (double)form.Probability_b.Value;
 			this.I = new Function("I", form.Initial.Text, "x");
 
 			this.drawTrajectory = form.traj.Checked;
@@ -84,11 +91,27 @@ namespace WindowsFormsApp1
 
 				while (j < iterations)
 				{
-					double nextX = F.calculate(outX[j - 1], outY[j - 1]);
-					double nextY = G.calculate(outX[j - 1], outY[j - 1]);
+					Random r = new Random();
+					int range = 1;
+					double rdouble = r.NextDouble() * range;
 
-					outX.Add(Math.Round(nextX, 5));
-					outY.Add(Math.Round(nextY, 5));
+					if (rdouble < Probability)
+                    {
+						double nextX = F.calculate(outX[j - 1], outY[j - 1]);
+						double nextY = G.calculate(outX[j - 1], outY[j - 1]);
+
+						outX.Add(Math.Round(nextX, 5));
+						outY.Add(Math.Round(nextY, 5));
+					}
+
+					else
+                    {
+						double nextX = F_b.calculate(outX[j - 1], outY[j - 1]);
+						double nextY = G_b.calculate(outX[j - 1], outY[j - 1]);
+
+						outX.Add(Math.Round(nextX, 5));
+						outY.Add(Math.Round(nextY, 5));
+					}
 
 					j++;
 				}

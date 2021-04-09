@@ -37,6 +37,16 @@
             this.Func2 = new System.Windows.Forms.TextBox();
             this.label3 = new System.Windows.Forms.Label();
             this.label4 = new System.Windows.Forms.Label();
+            this.Problabel = new System.Windows.Forms.Label();
+            this.Probability = new System.Windows.Forms.NumericUpDown();
+            this.label1b = new System.Windows.Forms.Label();
+            this.Func3 = new System.Windows.Forms.TextBox();
+            this.formsPlot1b = new ScottPlot.FormsPlot();
+            this.Func4 = new System.Windows.Forms.TextBox();
+            this.label3b = new System.Windows.Forms.Label();
+            this.label4b = new System.Windows.Forms.Label();
+            this.Problabel_b = new System.Windows.Forms.Label();
+            this.Probability_b = new System.Windows.Forms.NumericUpDown();
             this.iters = new System.Windows.Forms.NumericUpDown();
             this.label5 = new System.Windows.Forms.Label();
             this.InitialCondition = new System.Windows.Forms.Label();
@@ -165,6 +175,120 @@
             this.label4.Size = new System.Drawing.Size(30, 38);
             this.label4.TabIndex = 11;
             this.label4.Text = ")";
+            //
+            //Problabel
+            //
+            this.Problabel.AutoSize = true;
+            this.Problabel.Location = new System.Drawing.Point(689, 17);
+            this.Problabel.Name = "Problabel";
+            this.Problabel.Padding = new System.Windows.Forms.Padding(3);
+            this.Problabel.Size = new System.Drawing.Size(30, 38);
+            this.Problabel.TabIndex = 12;
+            this.Problabel.Text = "Probability: ";
+            //
+            //Probability
+            //
+            this.Probability.AutoSize = true;
+            this.Probability.DecimalPlaces = 3;
+            this.Probability.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.Probability.Location = new System.Drawing.Point(900, 17);
+            this.Probability.Name = "Probability";
+            this.Probability.Size = new System.Drawing.Size(159, 38);
+            this.Probability.TabIndex = 7;
+            this.Probability.Tag = "double";
+            this.Probability.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            131072});
+            // 
+            // label1b
+            // 
+            this.label1b.AutoSize = true;
+            this.label1b.Location = new System.Drawing.Point(3, 117);
+            this.label1b.Name = "label1b";
+            this.label1b.Padding = new System.Windows.Forms.Padding(3);
+            this.label1b.Size = new System.Drawing.Size(131, 38);
+            this.label1b.TabIndex = 0;
+            this.label1b.Text = "G(x,y) = (";
+            //
+            // Func3
+            //
+            this.Func3.Location = new System.Drawing.Point(154, 120);
+            this.Func3.Name = "Func3";
+            this.Func3.Size = new System.Drawing.Size(195, 38);
+            this.Func3.TabIndex = 9;
+            // 
+            // formsPlot1b
+            // 
+            this.formsPlot1b.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.formsPlot1b.Location = new System.Drawing.Point(0, 0);
+            this.formsPlot1b.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.formsPlot1b.Name = "formsPlot1b";
+            this.formsPlot1b.Size = new System.Drawing.Size(1557, 790);
+            this.formsPlot1b.TabIndex = 8;
+            this.formsPlot1b.MouseMoved += new System.Windows.Forms.MouseEventHandler(this.formsPlot1_MouseMoved);
+            //
+            // Func4
+            //
+            this.Func4.Location = new System.Drawing.Point(429, 120);
+            this.Func4.Name = "Func4";
+            this.Func4.Size = new System.Drawing.Size(195, 38);
+            this.Func4.TabIndex = 9;
+            // 
+            // label3b
+            // 
+            this.label3b.AutoSize = true;
+            this.label3b.Location = new System.Drawing.Point(373, 117);
+            this.label3b.Name = "label3b";
+            this.label3b.Padding = new System.Windows.Forms.Padding(3);
+            this.label3b.Size = new System.Drawing.Size(29, 38);
+            this.label3b.TabIndex = 10;
+            this.label3b.Text = ",";
+            // 
+            // label4b
+            // 
+            this.label4b.AutoSize = true;
+            this.label4b.Location = new System.Drawing.Point(639, 117);
+            this.label4b.Name = "label4b";
+            this.label4b.Padding = new System.Windows.Forms.Padding(3);
+            this.label4b.Size = new System.Drawing.Size(30, 38);
+            this.label4b.TabIndex = 11;
+            this.label4b.Text = ")";
+            //
+            //Problabel_b
+            //
+            this.Problabel_b.AutoSize = true;
+            this.Problabel_b.Location = new System.Drawing.Point(689, 117);
+            this.Problabel_b.Name = "Problabel_b";
+            this.Problabel_b.Padding = new System.Windows.Forms.Padding(3);
+            this.Problabel_b.Size = new System.Drawing.Size(30, 38);
+            this.Problabel_b.TabIndex = 12;
+            this.Problabel_b.Text = "Probability: ";
+            //
+            //Probability_b
+            //
+            this.Probability_b.AutoSize = true;
+            this.Probability_b.DecimalPlaces = 3;
+            this.Probability_b.Increment = new decimal(new int[] {
+            5,
+            0,
+            0,
+            131072});
+            this.Probability_b.Location = new System.Drawing.Point(900, 117);
+            this.Probability_b.Name = "Probability_b";
+            this.Probability_b.Size = new System.Drawing.Size(159, 38);
+            this.Probability_b.TabIndex = 7;
+            this.Probability_b.Tag = "double";
+            this.Probability_b.Value = new decimal(new int[] {
+            50,
+            0,
+            0,
+            131072});
             // 
             // iters
             // 
@@ -413,6 +537,15 @@
             this.FractalPanel.Controls.Add(this.label3);
             this.FractalPanel.Controls.Add(this.Func1);
             this.FractalPanel.Controls.Add(this.Func2);
+            this.FractalPanel.Controls.Add(this.Problabel);
+            this.FractalPanel.Controls.Add(this.Probability);
+            this.FractalPanel.Controls.Add(this.label4b);
+            this.FractalPanel.Controls.Add(this.label1b);
+            this.FractalPanel.Controls.Add(this.label3b);
+            this.FractalPanel.Controls.Add(this.Func3);
+            this.FractalPanel.Controls.Add(this.Func4);
+            this.FractalPanel.Controls.Add(this.Problabel_b);
+            this.FractalPanel.Controls.Add(this.Probability_b);
             this.FractalPanel.Location = new System.Drawing.Point(682, 123);
             this.FractalPanel.Name = "FractalPanel";
             this.FractalPanel.Size = new System.Drawing.Size(710, 76);
@@ -556,6 +689,8 @@
         //Funcitons
         public System.Windows.Forms.TextBox Func1;
         public System.Windows.Forms.TextBox Func2;
+        public System.Windows.Forms.TextBox Func3;
+        public System.Windows.Forms.TextBox Func4;
         public System.Windows.Forms.TextBox Initial;
         //Toggles
         public System.Windows.Forms.CheckBox DrawInit;
@@ -563,6 +698,8 @@
         public System.Windows.Forms.CheckBox DrawFunc;
         //Values
         public System.Windows.Forms.NumericUpDown IncValue;
+        public System.Windows.Forms.NumericUpDown Probability;
+        public System.Windows.Forms.NumericUpDown Probability_b;
         public System.Windows.Forms.NumericUpDown iters;
         public System.Windows.Forms.NumericUpDown start;
         public System.Windows.Forms.NumericUpDown finish;
@@ -573,6 +710,12 @@
         public ScottPlot.FormsPlot formsPlot1;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.Label label4;
+        private System.Windows.Forms.Label Problabel;
+        private System.Windows.Forms.Label Problabel_b;
+        private System.Windows.Forms.Label label1b;
+        public ScottPlot.FormsPlot formsPlot1b;
+        private System.Windows.Forms.Label label3b;
+        private System.Windows.Forms.Label label4b;
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.Label InitialCondition;
         private System.Windows.Forms.Label label6;
