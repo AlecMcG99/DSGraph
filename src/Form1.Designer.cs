@@ -1,4 +1,6 @@
-﻿namespace WindowsFormsApp1
+﻿using System.Windows.Forms;
+
+namespace WindowsFormsApp1
 {
     partial class Form1
     {
@@ -28,6 +30,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            this.components = new System.ComponentModel.Container();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Form1));
             this.label1 = new System.Windows.Forms.Label();
             this.Func1 = new System.Windows.Forms.TextBox();
@@ -52,20 +55,20 @@
             this.DrawButton = new System.Windows.Forms.ToolStripButton();
             this.toolStripSeparator3 = new System.Windows.Forms.ToolStripSeparator();
             this.ClearButton = new System.Windows.Forms.ToolStripButton();
+            this.InitialPanel = new System.Windows.Forms.Panel();
+            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
+            this.DrawDrop = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
+            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
+            this.coor = new System.Windows.Forms.ToolStripTextBox();
+            this.InitialDrop = new System.Windows.Forms.ToolStripDropDownButton();
+            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
+            this.FractalDrop = new System.Windows.Forms.ToolStripDropDownButton();
             this.TrajIterPanel = new System.Windows.Forms.Panel();
             this.DrawFunc = new System.Windows.Forms.CheckBox();
             this.TrajIters = new System.Windows.Forms.NumericUpDown();
             this.label8 = new System.Windows.Forms.Label();
             this.FractalPanel = new System.Windows.Forms.Panel();
-            this.InitialPanel = new System.Windows.Forms.Panel();
-            this.toolStrip2 = new System.Windows.Forms.ToolStrip();
-            this.coor = new System.Windows.Forms.ToolStripTextBox();
-            this.toolStrip1 = new System.Windows.Forms.ToolStrip();
-            this.DrawDrop = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSeparator1 = new System.Windows.Forms.ToolStripSeparator();
-            this.InitialDrop = new System.Windows.Forms.ToolStripDropDownButton();
-            this.toolStripSeparator2 = new System.Windows.Forms.ToolStripSeparator();
-            this.FractalDrop = new System.Windows.Forms.ToolStripDropDownButton();
             ((System.ComponentModel.ISupportInitialize)(this.IncValue)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.iters)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.finish)).BeginInit();
@@ -75,12 +78,12 @@
             this.toolStripContainer1.TopToolStripPanel.SuspendLayout();
             this.toolStripContainer1.SuspendLayout();
             this.toolStrip3.SuspendLayout();
-            this.TrajIterPanel.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.TrajIters)).BeginInit();
-            this.FractalPanel.SuspendLayout();
             this.InitialPanel.SuspendLayout();
             this.toolStrip2.SuspendLayout();
             this.toolStrip1.SuspendLayout();
+            this.TrajIterPanel.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.TrajIters)).BeginInit();
+            this.FractalPanel.SuspendLayout();
             this.SuspendLayout();
             // 
             // label1
@@ -135,7 +138,7 @@
             this.formsPlot1.Location = new System.Drawing.Point(0, 0);
             this.formsPlot1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.formsPlot1.Name = "formsPlot1";
-            this.formsPlot1.Size = new System.Drawing.Size(1557, 790);
+            this.formsPlot1.Size = new System.Drawing.Size(1557, 872);
             this.formsPlot1.TabIndex = 8;
             this.formsPlot1.MouseMoved += new System.Windows.Forms.MouseEventHandler(this.formsPlot1_MouseMoved);
             // 
@@ -293,6 +296,7 @@
             this.traj.TabIndex = 22;
             this.traj.Text = "Show Trajectory";
             this.traj.UseVisualStyleBackColor = true;
+            this.traj.CheckedChanged += new System.EventHandler(this.traj_CheckedChanged);
             // 
             // toolStripContainer1
             // 
@@ -306,18 +310,18 @@
             this.toolStripContainer1.ContentPanel.AutoScroll = true;
             this.toolStripContainer1.ContentPanel.Controls.Add(this.formsPlot1);
             this.toolStripContainer1.ContentPanel.Controls.Add(this.InitialPanel);
-            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1557, 790);
+            this.toolStripContainer1.ContentPanel.Size = new System.Drawing.Size(1557, 872);
             this.toolStripContainer1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.toolStripContainer1.Location = new System.Drawing.Point(0, 0);
             this.toolStripContainer1.Name = "toolStripContainer1";
             this.toolStripContainer1.Size = new System.Drawing.Size(1557, 976);
             this.toolStripContainer1.TabIndex = 25;
             this.toolStripContainer1.Text = "toolStripContainer1";
+            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             // 
             // toolStripContainer1.TopToolStripPanel
             // 
             this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip1);
-            this.toolStripContainer1.TopToolStripPanel.Controls.Add(this.toolStrip2);
             // 
             // toolStrip3
             // 
@@ -329,7 +333,7 @@
             this.ClearButton});
             this.toolStrip3.Location = new System.Drawing.Point(8, 0);
             this.toolStrip3.Name = "toolStrip3";
-            this.toolStrip3.Size = new System.Drawing.Size(211, 62);
+            this.toolStrip3.Size = new System.Drawing.Size(211, 52);
             this.toolStrip3.TabIndex = 0;
             // 
             // DrawButton
@@ -338,7 +342,7 @@
             this.DrawButton.Image = ((System.Drawing.Image)(resources.GetObject("DrawButton.Image")));
             this.DrawButton.ImageTransparentColor = System.Drawing.Color.Magenta;
             this.DrawButton.Name = "DrawButton";
-            this.DrawButton.Size = new System.Drawing.Size(90, 55);
+            this.DrawButton.Size = new System.Drawing.Size(90, 45);
             this.DrawButton.Text = "Draw";
             this.DrawButton.Click += new System.EventHandler(this.DrawButton_Click);
             // 
@@ -356,6 +360,96 @@
             this.ClearButton.Size = new System.Drawing.Size(89, 45);
             this.ClearButton.Text = "Clear";
             this.ClearButton.Click += new System.EventHandler(this.ClearButton_Click);
+            // 
+            // InitialPanel
+            // 
+            this.InitialPanel.AutoSize = true;
+            this.InitialPanel.Controls.Add(this.start);
+            this.InitialPanel.Controls.Add(this.label6);
+            this.InitialPanel.Controls.Add(this.finish);
+            this.InitialPanel.Controls.Add(this.label7);
+            this.InitialPanel.Controls.Add(this.IncLable);
+            this.InitialPanel.Controls.Add(this.Initial);
+            this.InitialPanel.Controls.Add(this.IncValue);
+            this.InitialPanel.Controls.Add(this.InitialCondition);
+            this.InitialPanel.Location = new System.Drawing.Point(630, 227);
+            this.InitialPanel.Name = "InitialPanel";
+            this.InitialPanel.Size = new System.Drawing.Size(511, 242);
+            this.InitialPanel.TabIndex = 25;
+            // 
+            // toolStrip2
+            // 
+            this.toolStrip2.AllowMerge = false;
+            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.coor});
+            this.toolStrip2.Location = new System.Drawing.Point(8, 62);
+            this.toolStrip2.Name = "toolStrip2";
+            this.toolStrip2.Size = new System.Drawing.Size(358, 62);
+            this.toolStrip2.TabIndex = 1;
+            // 
+            // coor
+            // 
+            this.coor.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
+            this.coor.Font = new System.Drawing.Font("Segoe UI", 9F);
+            this.coor.Name = "coor";
+            this.coor.ReadOnly = true;
+            this.coor.Size = new System.Drawing.Size(250, 47);
+            this.coor.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
+            // 
+            // toolStrip1
+            // 
+            this.toolStrip1.AllowMerge = false;
+            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
+            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
+            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.DrawDrop,
+            this.toolStripSeparator1,
+            this.InitialDrop,
+            this.toolStripSeparator2,
+            this.FractalDrop});
+            this.toolStrip1.Location = new System.Drawing.Point(8, 0);
+            this.toolStrip1.Name = "toolStrip1";
+            this.toolStrip1.Size = new System.Drawing.Size(612, 52);
+            this.toolStrip1.TabIndex = 0;
+            // 
+            // DrawDrop
+            // 
+            this.DrawDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.DrawDrop.Image = ((System.Drawing.Image)(resources.GetObject("DrawDrop.Image")));
+            this.DrawDrop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.DrawDrop.Name = "DrawDrop";
+            this.DrawDrop.Size = new System.Drawing.Size(112, 45);
+            this.DrawDrop.Text = "Draw";
+            // 
+            // toolStripSeparator1
+            // 
+            this.toolStripSeparator1.Name = "toolStripSeparator1";
+            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
+            // 
+            // InitialDrop
+            // 
+            this.InitialDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.InitialDrop.Image = ((System.Drawing.Image)(resources.GetObject("InitialDrop.Image")));
+            this.InitialDrop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.InitialDrop.Name = "InitialDrop";
+            this.InitialDrop.Size = new System.Drawing.Size(254, 45);
+            this.InitialDrop.Text = "Initial Condition";
+            // 
+            // toolStripSeparator2
+            // 
+            this.toolStripSeparator2.Name = "toolStripSeparator2";
+            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
+            // 
+            // FractalDrop
+            // 
+            this.FractalDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
+            this.FractalDrop.Image = ((System.Drawing.Image)(resources.GetObject("FractalDrop.Image")));
+            this.FractalDrop.ImageTransparentColor = System.Drawing.Color.Magenta;
+            this.FractalDrop.Name = "FractalDrop";
+            this.FractalDrop.Size = new System.Drawing.Size(130, 45);
+            this.FractalDrop.Text = "Fractal";
             // 
             // TrajIterPanel
             // 
@@ -418,96 +512,6 @@
             this.FractalPanel.Size = new System.Drawing.Size(710, 76);
             this.FractalPanel.TabIndex = 28;
             // 
-            // InitialPanel
-            // 
-            this.InitialPanel.AutoSize = true;
-            this.InitialPanel.Controls.Add(this.start);
-            this.InitialPanel.Controls.Add(this.label6);
-            this.InitialPanel.Controls.Add(this.finish);
-            this.InitialPanel.Controls.Add(this.label7);
-            this.InitialPanel.Controls.Add(this.IncLable);
-            this.InitialPanel.Controls.Add(this.Initial);
-            this.InitialPanel.Controls.Add(this.IncValue);
-            this.InitialPanel.Controls.Add(this.InitialCondition);
-            this.InitialPanel.Location = new System.Drawing.Point(630, 227);
-            this.InitialPanel.Name = "InitialPanel";
-            this.InitialPanel.Size = new System.Drawing.Size(511, 242);
-            this.InitialPanel.TabIndex = 25;
-            // 
-            // toolStrip2
-            // 
-            this.toolStrip2.AllowMerge = false;
-            this.toolStrip2.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip2.ImageScalingSize = new System.Drawing.Size(40, 40);
-            this.toolStrip2.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.coor});
-            this.toolStrip2.Location = new System.Drawing.Point(8, 62);
-            this.toolStrip2.Name = "toolStrip2";
-            this.toolStrip2.Size = new System.Drawing.Size(358, 62);
-            this.toolStrip2.TabIndex = 1;
-            // 
-            // coor
-            // 
-            this.coor.Alignment = System.Windows.Forms.ToolStripItemAlignment.Right;
-            this.coor.Font = new System.Drawing.Font("Segoe UI", 9F);
-            this.coor.Name = "coor";
-            this.coor.ReadOnly = true;
-            this.coor.Size = new System.Drawing.Size(250, 47);
-            this.coor.TextBoxTextAlign = System.Windows.Forms.HorizontalAlignment.Right;
-            // 
-            // toolStrip1
-            // 
-            this.toolStrip1.AllowMerge = false;
-            this.toolStrip1.Dock = System.Windows.Forms.DockStyle.None;
-            this.toolStrip1.ImageScalingSize = new System.Drawing.Size(40, 40);
-            this.toolStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.DrawDrop,
-            this.toolStripSeparator1,
-            this.InitialDrop,
-            this.toolStripSeparator2,
-            this.FractalDrop});
-            this.toolStrip1.Location = new System.Drawing.Point(8, 0);
-            this.toolStrip1.Name = "toolStrip1";
-            this.toolStrip1.Size = new System.Drawing.Size(534, 62);
-            this.toolStrip1.TabIndex = 0;
-            // 
-            // DrawDrop
-            // 
-            this.DrawDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.DrawDrop.Image = ((System.Drawing.Image)(resources.GetObject("DrawDrop.Image")));
-            this.DrawDrop.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.DrawDrop.Name = "DrawDrop";
-            this.DrawDrop.Size = new System.Drawing.Size(112, 45);
-            this.DrawDrop.Text = "Draw";
-            // 
-            // toolStripSeparator1
-            // 
-            this.toolStripSeparator1.Name = "toolStripSeparator1";
-            this.toolStripSeparator1.Size = new System.Drawing.Size(6, 52);
-            // 
-            // InitialDrop
-            // 
-            this.InitialDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.InitialDrop.Image = ((System.Drawing.Image)(resources.GetObject("InitialDrop.Image")));
-            this.InitialDrop.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.InitialDrop.Name = "InitialDrop";
-            this.InitialDrop.Size = new System.Drawing.Size(254, 45);
-            this.InitialDrop.Text = "Initial Condition";
-            // 
-            // toolStripSeparator2
-            // 
-            this.toolStripSeparator2.Name = "toolStripSeparator2";
-            this.toolStripSeparator2.Size = new System.Drawing.Size(6, 52);
-            // 
-            // FractalDrop
-            // 
-            this.FractalDrop.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Text;
-            this.FractalDrop.Image = ((System.Drawing.Image)(resources.GetObject("FractalDrop.Image")));
-            this.FractalDrop.ImageTransparentColor = System.Drawing.Color.Magenta;
-            this.FractalDrop.Name = "FractalDrop";
-            this.FractalDrop.Size = new System.Drawing.Size(130, 45);
-            this.FractalDrop.Text = "Fractal";
-            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(16F, 31F);
@@ -536,17 +540,17 @@
             this.toolStripContainer1.PerformLayout();
             this.toolStrip3.ResumeLayout(false);
             this.toolStrip3.PerformLayout();
+            this.InitialPanel.ResumeLayout(false);
+            this.InitialPanel.PerformLayout();
+            this.toolStrip1.ResumeLayout(false);
+            this.toolStrip1.PerformLayout();
+            this.toolStrip2.ResumeLayout(false);
+            this.toolStrip2.PerformLayout();
             this.TrajIterPanel.ResumeLayout(false);
             this.TrajIterPanel.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.TrajIters)).EndInit();
             this.FractalPanel.ResumeLayout(false);
             this.FractalPanel.PerformLayout();
-            this.InitialPanel.ResumeLayout(false);
-            this.InitialPanel.PerformLayout();
-            this.toolStrip2.ResumeLayout(false);
-            this.toolStrip2.PerformLayout();
-            this.toolStrip1.ResumeLayout(false);
-            this.toolStrip1.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -594,7 +598,6 @@
         private System.Windows.Forms.ToolStripButton ClearButton;
         private System.Windows.Forms.ToolStrip toolStrip2;
         private System.Windows.Forms.ToolStripTextBox coor;
-        
     }
 }
 
