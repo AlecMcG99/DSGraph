@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ScottPlot;
 using org.mariuszgromada.math.mxparser;
 using System.Collections;
 using System.Runtime.InteropServices;
@@ -16,6 +17,9 @@ namespace WindowsFormsApp1
 	
 	public partial class Form1 : Form
 	{
+		private List<DynamicalSystem> systems = new List<DynamicalSystem>();
+		double[] trajectoryXs;
+		double[] trajectoryYs;
 
 		public Form1()
 		{
@@ -28,7 +32,8 @@ namespace WindowsFormsApp1
 			formatToolStrips();
 			InitToolBar();
 			formsPlot1.Configure(lowQualityWhileDragging: true);
-			
+			trajectoryXs = new double[(int)TrajIters.Value];
+			trajectoryYs = new double[(int)TrajIters.Value];
 		}
 
 		private void formatToolStrips()
@@ -64,17 +69,22 @@ namespace WindowsFormsApp1
 		private void DrawButton_Click(object sender, EventArgs e)
 		{
 			formsPlot1.plt.Clear();
-			DynamicalSystem dynamicalSystem = new DynamicalSystem("1", this);
-			if(DrawInit.Checked)formsPlot1.plt.Add(dynamicalSystem.getIC());
-			foreach (ScottPlot.PlottableScatter s in dynamicalSystem.getDynamicalSystem())
+			systems.Clear();
+			systems.Add(new DynamicalSystem("1", this));
+
+			if (DrawInit.Checked) formsPlot1.plt.Add(systems[0].getIC());
+			foreach (PlottableScatter s in systems[0].getDynamicalSystem())
 			{
 				formsPlot1.plt.Add(s);
 			}
 			formsPlot1.Render(lowQuality: true);
-			
+			(trajectoryXs, trajectoryYs) = systems[0].getTrajectory(0.0, 0.0);
+			formsPlot1.plt.Add(new PlottableScatter(trajectoryXs, trajectoryYs));
+			if (!traj.Checked) formsPlot1.plt.GetPlottables()[formsPlot1.plt.GetPlottables().Count - 1].visible = false;
+
 		}
 
-	   
+
 		private void ClearButton_Click(object sender, EventArgs e)
 		{
 			formsPlot1.plt.Clear();
@@ -83,29 +93,24 @@ namespace WindowsFormsApp1
 		}
 
 
-		private void UpdateCoor()
+		private void UpdateCoordinates()
 		{
-			Point mouseLoc = new Point(Cursor.Position.X, Cursor.Position.Y);
-			mouseLoc.X -= this.PointToScreen(formsPlot1.Location).X;
-			mouseLoc.Y -= this.PointToScreen(formsPlot1.Location).Y;
-			mouseLoc.Y -= (Cursor.Size.Height-Cursor.Size.Height/6);
-			
-
-			PointF mouse = formsPlot1.plt.CoordinateFromPixel(mouseLoc);
-			coor.Text = string.Format(
-				" Mouse Coordinates: ({0}, {1})",
-				mouse.X,
-				mouse.Y
-				);
-
-
+			(double x, double y) = formsPlot1.GetMouseCoordinates();
+			coor.Text = "Mouse Coordinates: (" + $"{x:N2}, {y:N2}" + ")";
 		}
 
 	   
 
 		private void formsPlot1_MouseMoved(object sender, EventArgs e)
 		{
-
+			UpdateCoordinates();
+			(double mouseX, double mouseY) = formsPlot1.GetMouseCoordinates();
+			if (formsPlot1.plt.GetPlottables().Count() > 0 && traj.Checked)
+			{
+				(trajectoryXs, trajectoryYs) = systems[0].getTrajectory(mouseX, mouseY);
+				formsPlot1.plt.GetPlottables()[formsPlot1.plt.GetPlottables().Count - 1] = new PlottableScatter(trajectoryXs, trajectoryYs);
+				formsPlot1.Render(skipIfCurrentlyRendering: true, lowQuality: true, processEvents: true);
+			}
 		}
 
 		FormWindowState LastWindowState = FormWindowState.Normal;
@@ -116,6 +121,13 @@ namespace WindowsFormsApp1
 			{
 				LastWindowState = WindowState;
 				formatToolStrips();
+			}
+		}
+		private void traj_CheckedChanged(object sender, EventArgs e)
+		{
+			if (formsPlot1.plt.GetPlottables().Count >= 1)
+			{
+				formsPlot1.plt.GetPlottables()[formsPlot1.plt.GetPlottables().Count - 1].visible = traj.Checked;
 			}
 		}
 	}

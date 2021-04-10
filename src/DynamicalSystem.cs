@@ -136,30 +136,22 @@ namespace WindowsFormsApp1
 				scatters.Add(new PlottableScatter(outX.ToArray(), outY.ToArray())
 				{
 					lineWidth = 0,
-					markerSize = 3,
+					markerSize = 1,
 					color = randomColor
 				});
-				System.Threading.Thread.Sleep(0005);
 				i++;
 			}
 
 			return scatters.ToArray();
 		}
 
-		public PlottableScatter getTrajectory()
-		{
-			PointF mouseLoc = new PointF(Cursor.Position.X, Cursor.Position.Y);
-			mouseLoc.X -= form.PointToScreen(form.formsPlot1.Location).X;
-			mouseLoc.Y -= form.PointToScreen(form.formsPlot1.Location).Y;
-
-			PointF mouse = new PointF();
-			mouse.X = (float)form.formsPlot1.plt.CoordinateFromPixelX(mouseLoc.X);
-			mouse.Y = (float)form.formsPlot1.plt.CoordinateFromPixelY(mouseLoc.Y);
+		public (double[], double[]) getTrajectory(double xCoor, double yCoor)
+		{ 
 
 			double[] xs = new double[trajectoryIterations + 1];
 			double[] ys = new double[trajectoryIterations + 1];
-			xs[0] = form.formsPlot1.plt.CoordinateFromPixelX(mouseLoc.X);
-			ys[0] = form.formsPlot1.plt.CoordinateFromPixelY(mouseLoc.Y);
+			xs[0] = xCoor;
+			ys[0] = yCoor;
 
 			int i = 1;
 			while (i <= trajectoryIterations)
@@ -169,7 +161,7 @@ namespace WindowsFormsApp1
 				i++;
 			}
 
-			return new PlottableScatter(xs, ys);
+			return (xs, ys);
 		}
 
 
