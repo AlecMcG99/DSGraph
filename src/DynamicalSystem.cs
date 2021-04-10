@@ -21,6 +21,13 @@ namespace WindowsFormsApp1
 		public string ID { get; set; }
 		public Function F { get; set; }
 		public Function G { get; set; }
+		public double Probability { get; set; }
+		public Function F_b { get; set; }
+		public Function G_b { get; set; }
+		public double Probability_b { get; set; }
+		public Function F_c { get; set; }
+		public Function G_c { get; set; }
+		public double Probability_c { get; set; }
 		public Function I { get; set; }
 		public bool drawTrajectory { get; set; }
 		public bool drawIC { get; set; }
@@ -31,13 +38,20 @@ namespace WindowsFormsApp1
 		private double[] ICy;
 		private int ICCount;
 
+
 		public DynamicalSystem(String id, Form1 form)
 		{
 			this.ID = id;
 			this.form = form;
-
 			this.F = new Function("F", formatFunc(form.Func1.Text), "x", "y");
 			this.G = new Function("G", formatFunc(form.Func2.Text), "x", "y");
+			this.Probability = (double)form.Probability.Value;
+			this.F_b = new Function("A", formatFunc(form.Func1b.Text), "x", "y");
+			this.G_b = new Function("B", formatFunc(form.Func2b.Text), "x", "y");
+			this.Probability_b = (double)form.Probability_b.Value;
+			this.F_c = new Function("A", formatFunc(form.Func1c.Text), "x", "y");
+			this.G_c = new Function("B", formatFunc(form.Func2c.Text), "x", "y");
+			this.Probability_c = (double)form.Probability_c.Value;
 			this.I = new Function("I", form.Initial.Text, "x");
 
 			this.drawTrajectory = form.traj.Checked;
@@ -81,14 +95,38 @@ namespace WindowsFormsApp1
 				int j = 1;
 				outX.Add(ICx[i]);
 				outY.Add(ICy[i]);
+				Random r = new Random(DateTime.Now.Millisecond);
 
 				while (j < iterations)
 				{
-					double nextX = F.calculate(outX[j - 1], outY[j - 1]);
-					double nextY = G.calculate(outX[j - 1], outY[j - 1]);
+					int rInt = r.Next(0, 1000);
 
-					outX.Add(Math.Round(nextX, 5));
-					outY.Add(Math.Round(nextY, 5));
+					if (rInt < Probability * 1000)
+					{
+						double nextX = F.calculate(outX[j - 1], outY[j - 1]);
+						double nextY = G.calculate(outX[j - 1], outY[j - 1]);
+
+						outX.Add(Math.Round(nextX, 5));
+						outY.Add(Math.Round(nextY, 5));
+					}
+
+					else if (rInt < (Probability * 1000 + Probability_b * 1000))
+                    {
+						double nextX = F_b.calculate(outX[j - 1], outY[j - 1]);
+						double nextY = G_b.calculate(outX[j - 1], outY[j - 1]);
+
+						outX.Add(Math.Round(nextX, 5));
+						outY.Add(Math.Round(nextY, 5));
+					}
+
+					else
+                    {
+						double nextX = F_c.calculate(outX[j - 1], outY[j - 1]);
+						double nextY = G_c.calculate(outX[j - 1], outY[j - 1]);
+
+						outX.Add(Math.Round(nextX, 5));
+						outY.Add(Math.Round(nextY, 5));
+					}
 
 					j++;
 				}
@@ -98,10 +136,10 @@ namespace WindowsFormsApp1
 				scatters.Add(new PlottableScatter(outX.ToArray(), outY.ToArray())
 				{
 					lineWidth = 0,
-					markerSize = 1,
+					markerSize = 3,
 					color = randomColor
-				}); 
-
+				});
+				System.Threading.Thread.Sleep(0005);
 				i++;
 			}
 
@@ -127,7 +165,7 @@ namespace WindowsFormsApp1
 			while (i <= trajectoryIterations)
 			{
 				xs[i] = F.calculate(xs[i - 1], ys[i - 1]);
-				ys[i] = G.calculate(xs[i - 1], ys[i - 1]);
+				ys[i] = G.calculate(xs[i - 1], ys[i - 1]);					
 				i++;
 			}
 
