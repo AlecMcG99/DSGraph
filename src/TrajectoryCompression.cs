@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
+using Noemax.Compression;
 
 namespace WindowsFormsApp1
 {
@@ -28,7 +29,11 @@ namespace WindowsFormsApp1
                 this.trajectoryString += ",(" + xstr + "," + ystr + ")";
             }
         }
-        ///Need a create a compress method
+        public int compressTrajectory()
+        {
+            this.compressedString = this.trajectoryString;
+            return this.compressedString.Length;
+        }
 
     }
 }
