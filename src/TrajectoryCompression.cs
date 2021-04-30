@@ -5,6 +5,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using Noemax.Compression;
+using System.IO;
 
 namespace WindowsFormsApp1
 {
@@ -31,7 +32,16 @@ namespace WindowsFormsApp1
         }
         public int compressTrajectory()
         {
-            this.compressedString = this.trajectoryString;
+            //Stream trajectoryStream = new MemoryStream();
+
+            byte[] byteArray = Encoding.ASCII.GetBytes(this.trajectoryString);
+
+            byte[] compressedByteArray = Lzf4Compression.Lzf4.Compress(byteArray, 5);
+
+            ///trajectoryStream.Write(byteArray, 0, this.trajectoryString.Length);
+
+            this.compressedString = Encoding.Default.GetString(compressedByteArray);
+
             return this.compressedString.Length;
         }
 
