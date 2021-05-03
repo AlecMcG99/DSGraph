@@ -38,6 +38,16 @@ namespace WindowsFormsApp1
 
             byte[] compressedByteArray = Lzf4Compression.Lzf4.Compress(byteArray, 5);
 
+            //byte[] compressedByteArray = BZip2Compression.BZip2.Compress(byteArray, 5);
+
+            //byte[] compressedByteArray = DeflateCompression.Deflate.Compress(byteArray, 5);
+
+            //byte[] compressedByteArray = GZipCompression.GZip.Compress(byteArray, 5);
+
+            //byte[] compressedByteArray = LzmaCompression.Lzma.Compress(byteArray, 5);
+
+            //byte[] compressedByteArray = ZlibCompression.Zlib.Compress(byteArray, 5);
+
             ///trajectoryStream.Write(byteArray, 0, this.trajectoryString.Length);
 
             this.compressedString = Encoding.Default.GetString(compressedByteArray);
