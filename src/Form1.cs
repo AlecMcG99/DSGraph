@@ -54,6 +54,7 @@ namespace WindowsFormsApp1
 			var InitialHost = new ToolStripControlHost(InitialPanel);
 			var TrajIterHost = new ToolStripControlHost(TrajIterPanel);
 			var FractalHost = new ToolStripControlHost(FractalPanel);
+			var MarkovHost = new ToolStripControlHost(MarkovPanel);
 			
 			DrawDrop.DropDownItems.Add(TrajIterHost);
 
@@ -63,6 +64,9 @@ namespace WindowsFormsApp1
 			
 			FractalDrop.DropDownItems.Add(FractalHost);
 			FractalDrop.DropDown.Width = FractalPanel.Width;
+
+			MarkovDrop.DropDownItems.Add(MarkovHost);
+			MarkovDrop.DropDown.Width = MarkovPanel.Width;
 		}
 
 
